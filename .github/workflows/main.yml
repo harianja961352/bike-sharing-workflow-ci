@@ -5,7 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -18,17 +19,16 @@ jobs:
 
       - name: Run Modelling
         run: |
-          # Berikan izin akses penuh ke seluruh folder proyek
+          # Berikan izin tulis ke folder proyek agar tidak Permission Denied
           chmod -R 777 .
           
-          # Masuk ke folder lokasi script
+          # Masuk ke folder tempat script berada
           cd Workflow-CI/MLProject
           
-          # Buat folder Dashboard dan mlruns dengan izin penuh
+          # Buat folder Dashboard dan mlruns secara manual
           mkdir -p ../Dashboard
           mkdir -p mlruns
           chmod -R 777 mlruns
           
-          # Jalankan modelling dengan instruksi lokasi tracking yang jelas
-          export MLFLOW_TRACKING_URI=file://$(pwd)/mlruns
+          # Jalankan modelling
           python modelling.py
