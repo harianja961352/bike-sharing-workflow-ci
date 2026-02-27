@@ -19,16 +19,11 @@ jobs:
 
       - name: Run Modelling
         run: |
-          # Memberikan izin akses penuh ke folder agar tidak Permission Denied
-          chmod -R 777 .
+          # Buat folder Dashboard di lokasi yang benar
+          mkdir -p Workflow-CI/Dashboard
           
-          # Masuk ke folder lokasi script berada
+          # Masuk ke folder script
           cd Workflow-CI/MLProject
           
-          # Membuat folder yang dibutuhkan secara manual
-          mkdir -p ../Dashboard
-          mkdir -p mlruns
-          chmod -R 777 mlruns
-          
-          # Menjalankan modelling
+          # Jalankan modelling (MLflow akan menulis ke /tmp/mlruns sesuai kode di atas)
           python modelling.py

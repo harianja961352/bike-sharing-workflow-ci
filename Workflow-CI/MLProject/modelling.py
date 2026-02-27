@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # 1. SETUP MLFLOW LOKAL (WAJIB)
 # Reviewer meminta menggunakan storage lokal, bukan dagshub
-mlflow.set_tracking_uri("file:///mlruns")
+mlflow.set_tracking_uri("file:///tmp/mlruns")
 mlflow.set_experiment("Eksperimen_Bike_Sharing_Harianja")
 
 # --- KRITERIA 2: MENGAKTIFKAN AUTOLOG (WAJIB) ---
