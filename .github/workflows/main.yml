@@ -15,7 +15,9 @@ jobs:
           pip install pandas scikit-learn mlflow joblib
       - name: Run Modelling
         run: |
-          # Perintah ini memastikan kita berada di folder yang benar
+          # Kita masuk ke folder paling dalam tempat file berada
           cd Workflow-CI/MLProject
-          # Pastikan file modelling.py dijalankan dengan benar
+          # Kita pastikan folder Dashboard ada agar tidak error saat simpan model
+          mkdir -p ../Dashboard
+          # Jalankan modelling
           python modelling.py
