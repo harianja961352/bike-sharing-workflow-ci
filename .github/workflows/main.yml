@@ -6,25 +6,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
       - name: Install dependencies
         run: |
           pip install pandas scikit-learn mlflow joblib
+
       - name: Run Modelling
         run: |
-          # Masuk ke folder script
+          # Berikan izin akses penuh ke seluruh folder proyek
+          chmod -R 777 .
+          
+          # Masuk ke folder lokasi script
           cd Workflow-CI/MLProject
           
-          # Memberikan izin akses penuh agar tidak Permission Denied
-          sudo chmod -R 777 .
-          
-          # Membuat folder Dashboard dan mlruns secara manual
+          # Buat folder Dashboard dan mlruns dengan izin penuh
           mkdir -p ../Dashboard
           mkdir -p mlruns
-          sudo chmod -R 777 mlruns
+          chmod -R 777 mlruns
           
-          # Jalankan modelling
+          # Jalankan modelling dengan instruksi lokasi tracking yang jelas
+          export MLFLOW_TRACKING_URI=file://$(pwd)/mlruns
           python modelling.py
