@@ -6,18 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
       - name: Install dependencies
         run: |
+          # Menginstal semua library yang dipanggil di modelling.py
           pip install pandas scikit-learn mlflow joblib
+
       - name: Run Modelling
         run: |
-          # Kita masuk ke folder paling dalam tempat file berada
+          # Masuk ke folder lokasi script dan dataset berada
           cd Workflow-CI/MLProject
-          # Kita pastikan folder Dashboard ada agar tidak error saat simpan model
+          # Membuat folder Dashboard agar joblib.dump tidak error
           mkdir -p ../Dashboard
-          # Jalankan modelling
+          # Menjalankan script modelling
           python modelling.py
