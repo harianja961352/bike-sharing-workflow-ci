@@ -1,28 +1,28 @@
 import pandas as pd
 import mlflow
 import mlflow.sklearn
-import dagshub
+#import dagshub
 import joblib
 import os
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
-# 1. SETUP DAGSHUB & MLFLOW
-# Menggunakan link .mlflow sesuai konfigurasi DagsHub
-MLFLOW_TRACKING_URI = "https://dagshub.com/harianja961352/Eksperimen_SML_Harianja.mlflow"
-dagshub.init(repo_owner='harianja961352', repo_name='Eksperimen_SML_Harianja', mlflow=True)
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+
+# 1. SETUP MLFLOW LOKAL (WAJIB)
+# Reviewer meminta menggunakan storage lokal, bukan dagshub
+mlflow.set_tracking_uri('file:///./mlruns')
 mlflow.set_experiment("Eksperimen_Bike_Sharing_Harianja")
 
 # --- KRITERIA 2: MENGAKTIFKAN AUTOLOG (WAJIB) ---
 # Ini akan otomatis mencatat parameter, metrics (RMSE, R2), model, dan artefak
-mlflow.autolog()
+#mlflow.autolog()
+mlflow.sklearn.autolog()
 # --------------------------------------------
 
 # 2. LOAD DATA
 # Mengarahkan ke folder data_preprocessing sesuai saran struktur folder reviewer
 # export di Notebook agar file ini tersedia
-dataset_path = 'data_preprocessing/hour_cleaned.csv'
+dataset_path = 'hour_cleaned.csv'
 df = pd.read_csv(dataset_path)
 X = df.drop(columns=['cnt'])
 y = df['cnt']
