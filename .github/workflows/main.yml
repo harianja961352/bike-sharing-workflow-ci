@@ -27,4 +27,4 @@ jobs:
           
           # Jalankan modelling (MLflow akan menulis ke /tmp/mlruns sesuai kode di atas)
           #python modelling.py
-          mlflow run .
+          mlflow run . --no-conda
