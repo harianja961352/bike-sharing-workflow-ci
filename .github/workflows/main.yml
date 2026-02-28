@@ -26,4 +26,5 @@ jobs:
           cd Workflow-CI/MLProject
           
           # Jalankan modelling (MLflow akan menulis ke /tmp/mlruns sesuai kode di atas)
-          python modelling.py
+          #python modelling.py
+          mlflow run .
