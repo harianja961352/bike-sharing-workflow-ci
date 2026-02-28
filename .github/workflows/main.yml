@@ -19,13 +19,14 @@ jobs:
 
       - name: Run Modelling
         run: |
-          # Buat folder Dashboard di lokasi yang benar
+          # 1. Bersihkan folder mlruns lama untuk menghindari konflik ID
+          rm -rf /tmp/mlruns
+          
+          # 2. Memastikan folder Dashboard tersedia
           mkdir -p Workflow-CI/Dashboard
           
-          # Masuk ke folder script
+          # 3. Masuk ke folder MLProject
           cd Workflow-CI/MLProject
           
-          # Jalankan MLflow Run dengan flag --no-conda (WAJIB)
-          #mlflow run . --no-conda
-          # Gunakan --env-manager local agar MLflow tidak mencari Conda
+          # 4. Jalankan MLflow dengan mode lingkungan lokal
           mlflow run . --env-manager local
