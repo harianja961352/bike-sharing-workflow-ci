@@ -26,4 +26,6 @@ jobs:
           cd Workflow-CI/MLProject
           
           # Jalankan MLflow Run dengan flag --no-conda (WAJIB)
-          mlflow run . --no-conda
+          #mlflow run . --no-conda
+          # Gunakan --env-manager local agar MLflow tidak mencari Conda
+          mlflow run . --env-manager local
