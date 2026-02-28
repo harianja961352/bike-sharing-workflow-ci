@@ -25,6 +25,5 @@ jobs:
           # Masuk ke folder script
           cd Workflow-CI/MLProject
           
-          # Jalankan modelling (MLflow akan menulis ke /tmp/mlruns sesuai kode di atas)
-          #python modelling.py
+          # Jalankan MLflow Run dengan flag --no-conda (WAJIB)
           mlflow run . --no-conda

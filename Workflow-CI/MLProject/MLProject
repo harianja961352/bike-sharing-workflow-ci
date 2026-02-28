@@ -1,5 +1,5 @@
-name: Bike_Sharing_CI
-conda_env: conda.yaml
+name: Bike_Sharing_Project
+
 entry_points:
   main:
     command: "python modelling.py"
