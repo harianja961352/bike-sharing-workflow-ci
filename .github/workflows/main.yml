@@ -19,14 +19,15 @@ jobs:
 
       - name: Run Modelling
         run: |
-          # 1. Bersihkan folder mlruns lama untuk menghindari konflik ID
+          # 1. Bersihkan folder mlruns untuk memastikan tidak ada konflik ID
           rm -rf /tmp/mlruns
           
-          # 2. Memastikan folder Dashboard tersedia
+          # 2. Pastikan folder Dashboard tersedia
           mkdir -p Workflow-CI/Dashboard
           
           # 3. Masuk ke folder MLProject
           cd Workflow-CI/MLProject
           
-          # 4. Jalankan MLflow dengan mode lingkungan lokal
-          mlflow run . --env-manager local
+          # 4. Jalankan modelling.py secara langsung
+          # Ini akan tetap memicu MLflow Autolog sesuai Kriteria 2
+          python modelling.py
