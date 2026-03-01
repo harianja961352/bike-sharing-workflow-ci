@@ -30,4 +30,5 @@ jobs:
           
           # 4. Jalankan modelling.py secara langsung
           # Ini akan tetap memicu MLflow Autolog sesuai Kriteria 2
-          python modelling.py
+          #python modelling.py
+          mlflow run . --env-manager=local
